@@ -1,0 +1,50 @@
+# Ignore bundler config
+/.bundle/
+
+# Ignore the log files and temp files.
+log/*
+tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore cached files.
+public/assets
+/public/packs
+/public/packs-test
+
+# Ignore the database files.
+db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore uploaded files in development
+/storage
+
+# Ignore sensitive credentials.
+config/credentials.yml.enc
+config/master.key
+
+# Ignore node_modules
+node_modules/
+
+# Ignore Yarn integrity file
+.yarn-integrity
+
+# Ignore test files
+/test/tmp
+/test/version.tmp
+
+# Ignore environment variable files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore coverage reports
+coverage/
+
+Gemfile.lock
