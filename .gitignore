@@ -48,3 +48,6 @@ Thumbs.db
 coverage/
 
 Gemfile.lock
+
+deploy/docker-compose/data
+deploy/docker-compose/logs
