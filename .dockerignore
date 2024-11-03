@@ -1,8 +1,43 @@
-# Python
-__pycache__
-app.egg-info
-*.pyc
-.mypy_cache
-.coverage
-htmlcov
-.venv
+# Ruby specific files
+*.gem
+*.rbc
+*.o
+*.so
+
+# Bundler config files
+Gemfile.lock
+
+# Log files
+log/*
+*.log
+
+# Temporary files
+tmp/
+tmp/**/*
+*.tmp
+
+# Test files and directories
+test/
+spec/
+features/
+coverage/
+
+# Documentation
+doc/
+
+# Configuration files
+.env
+*.env
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.iml
+
+# Git files
+.git/
+.gitignore
+
+# System generated files
+Thumbs.db
+.DS_Store
