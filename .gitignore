@@ -2,10 +2,11 @@
 /.bundle/
 
 # Ignore the log files and temp files.
-log/*
+logs/
+log/
+data/
+*log.*
 tmp/*
-!/log/.keep
-!/tmp/.keep
 
 # Ignore cached files.
 public/assets
@@ -15,9 +16,6 @@ public/assets
 # Ignore the database files.
 db/*.sqlite3
 /db/*.sqlite3-journal
-
-# Ignore uploaded files in development
-/storage
 
 # Ignore sensitive credentials.
 config/credentials.yml.enc
@@ -48,6 +46,3 @@ Thumbs.db
 coverage/
 
 Gemfile.lock
-
-deploy/docker-compose/data
-deploy/docker-compose/logs
