@@ -1,6 +1,6 @@
-# Aphrodite Rails API 快速开发脚手架
+# Aphrodite Rails API Scaffold
 
-Aphrodite 是一个基于 [rails](https://rubyonrails.org) 开发的模板项目，旨在帮助开发者快速上手，深入理解框架的使用流程。该项目提供了全面的示例代码和配置，涵盖了常见的开发场景，以便于学习和实践。此外，Aphrodite 还包含容器部署模板，使得项目在现代云环境中能够轻松部署与管理，助力开发者高效构建和发布应用。
+Aphrodite 是一个基于 [Rails](https://rubyonrails.org) 开发的模板项目，旨在帮助开发者快速上手，深入理解框架的使用流程。该项目提供了全面的示例代码和配置，涵盖了常见的开发场景，以便于学习和实践。此外，Aphrodite 还包含容器部署模板，使得项目在现代云环境中能够轻松部署与管理，助力开发者高效构建和发布应用。
 
 ## 技术栈
 
@@ -28,21 +28,22 @@ Aphrodite 是一个基于 [rails](https://rubyonrails.org) 开发的模板项目
 
 ## 模块说明
 
-├── app/ # 应用核心代码
-├── bin/ # 可执行脚本
-├── config/ # 配置文件
-├── db/ # 数据库相关
-├── lib/ # 自定义库文件
-├── log/ # 日志文件
-├── public/ # 公共资源
-├── storage/ # 文件存储
-├── test/ # 测试文件
-├── tmp/ # 临时文件
-├── vendor/ # 第三方代码
-├── Gemfile # gem 依赖配置
-├── Gemfile.lock # gem 版本锁定
-├── README.md # 项目说明
-└── Rakefile # rake 任务
+```
+.
+├── app/                # 应用核心代码
+├── bin/                # 可执行脚本
+├── config/             # 配置文件
+├── db/                 # 数据库相关
+├── deploy/             # 部署相关文件
+├── docs/               # 项目文档
+├── lib/                # 自定义库文件
+├── public/             # 公共资源
+├── storage/            # 文件存储
+├── test/               # 测试文件
+├── tmp/                # 临时文件
+├── vendor/             # 第三方代码
+└── README.md           # 项目说明
+```
 
 ## 本地运行
 
