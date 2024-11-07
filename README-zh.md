@@ -67,6 +67,10 @@ deploy/db.sql
 bin/rails server
 ```
 
+## Repo Activity
+
+![Alt](https://repobeats.axiom.co/api/embed/92f87152abeaf234940e0a4979ac2644ab05a54f.svg "Repobeats analytics image")
+
 ## 贡献
 
 如果你有任何建议或想法，欢迎创建 Issue 或直接提交 Pull Request。

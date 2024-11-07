@@ -2,7 +2,7 @@
 
 Aphrodite is a template project based on [Rails](https://rubyonrails.org) that aims to help developers get started quickly and gain a deep understanding of the framework's usage process. The project provides comprehensive sample code and configurations, covering common development scenarios for easy learning and practice. In addition, Aphrodite also includes container deployment templates, making the project easy to deploy and manage in modern cloud environments, helping developers efficiently build and release applications.
 
-## Technology Stack
+## Tech Stack
 
 | Technology                                                | Description                                                                                   |
 | --------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -66,6 +66,10 @@ deploy/db.sql
 # 5. Start the service
 bin/rails server
 ```
+
+## Repo Activity
+
+![Alt](https://repobeats.axiom.co/api/embed/92f87152abeaf234940e0a4979ac2644ab05a54f.svg "Repobeats analytics image")
 
 ## Contribution
 
