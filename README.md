@@ -61,7 +61,7 @@ mv .env.example .env
 bundle install
 
 # 4. Initialize the database
-deploy/db.sql
+db/init.sql
 
 # 5. Start the service
 bin/rails server

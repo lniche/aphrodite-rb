@@ -61,7 +61,7 @@ mv .env.example .env
 bundle install
 
 # 4. 初始化数据库
-deploy/db.sql
+db/init.sql
 
 # 5. 启动服务
 bin/rails server
