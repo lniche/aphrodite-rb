@@ -36,6 +36,8 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
   gem 'dotenv-rails'
   gem 'rubocop-rails-omakase', require: false
+  gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do

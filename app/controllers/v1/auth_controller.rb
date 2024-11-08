@@ -1,6 +1,6 @@
 module V1
   class AuthController < ApplicationController
-    skip_before_action :verify_authenticity_token, only: [:send_sms, :login]
+    before_action :authenticate_user!, only: [:logout]
 
     def send_sms
       phone = params[:phone]
@@ -26,7 +26,7 @@ module V1
     end
 
     def logout
-      render json: { message: '已成功登出' }, status: :ok
+      render json: ApiResponse.ok()
     end
   end
 end
