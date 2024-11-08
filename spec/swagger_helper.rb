@@ -14,7 +14,15 @@ RSpec.configure do |config|
           description: 'API Description',
           version: '1.0.0'
         },
-        paths: {},
+        components: {
+          securitySchemes: {
+            BearerAuth: {
+              type: 'http',
+              scheme: 'bearer',
+              bearerFormat: 'JWT'
+            }
+          }
+        },
         servers: [
           {
             url: 'http://localhost:8000',

@@ -5,35 +5,12 @@
     "description": "API Description",
     "version": "1.0.0"
   },
-  "paths": {
-    "/v1/send-code": {
-      "post": {
-        "summary": "send_sms auth",
-        "responses": {
-          "200": {
-            "description": "successful"
-          }
-        }
-      }
-    },
-    "/v1/login": {
-      "post": {
-        "summary": "login auth",
-        "responses": {
-          "200": {
-            "description": "successful"
-          }
-        }
-      }
-    },
-    "/v1/logout": {
-      "post": {
-        "summary": "logout auth",
-        "responses": {
-          "200": {
-            "description": "successful"
-          }
-        }
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   },
@@ -46,5 +23,54 @@
       "url": "http://test.aphrodite.com",
       "description": "Test Environment"
     }
-  ]
+  ],
+  "paths": {
+    "/v1/send-code": {
+      "post": {
+        "summary": "send-code auth",
+        "description": "Send Verification Code",
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      }
+    },
+    "/v1/login": {
+      "post": {
+        "summary": "login auth",
+        "description": "User Registration/Login",
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      }
+    },
+    "/v1/logout": {
+      "post": {
+        "summary": "logout auth",
+        "description": "User Logout",
+        "tags": [
+          "Auth"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      }
+    }
+  }
 }
