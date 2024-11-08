@@ -1,5 +1,7 @@
 require_relative 'boot'
 require 'rails/all'
+require_relative '../app/middleware/request_id_middleware'
+
 
 Bundler.require(*Rails.groups)
 

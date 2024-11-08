@@ -10,7 +10,7 @@ module V1
       
       Rails.cache.write("sms_code_#{send_verify_code_req.phone}", code, expires_in: 5.minutes)
       # TODO fake send
-      render json: ApiResponse.ok()
+      render json: ApiResponse.ok(), status: :ok
     end
       
     def send_verify_code_params
@@ -20,8 +20,8 @@ module V1
     def login
       login_req = Requests::LoginReq.new(login_params)
 
-      cached_code = Rails.cache.read("sms_code_#{login_req.phone}")
-      return render json: { error: '验证码无效或已过期' }, status: :unauthorized if cached_code.nil? || cached_code != code
+      cached_code = Rails.cache.read("sms:code:#{login_req.phone}")
+      return render json: ApiResponse.fail(), status: :unauthorized if cached_code.nil? || cached_code != code
 
       payload = { phone: login_req.phone, exp: 24.hours.from_now.to_i }
       token = JwtService.encode(payload)
