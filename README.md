@@ -26,7 +26,7 @@ Aphrodite is a template project based on [Rails](https://rubyonrails.org) that a
 - **API modular design**: Supports modular API design, easy to expand and maintain.
 - **Swagger document integration**: Automatically generate API documents to facilitate front-end development and testing.
 
-## Module description
+## Structure
 
 ```
 .
@@ -45,7 +45,7 @@ Aphrodite is a template project based on [Rails](https://rubyonrails.org) that a
 └── README.md # Project description
 ```
 
-## Local operation
+## Run Local
 
 ```bash
 # 1. Clone the project code base

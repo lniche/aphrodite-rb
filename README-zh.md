@@ -57,7 +57,7 @@ cd config
 mv .env.example .env
 
 # 3. 处理依赖
-# 确保你已经安装了 Ruby 和 Rails 环境
+# 确保你已经安装了 Ruby 和 Rails 环境, 推荐使用rbenv
 bundle install
 
 # 4. 初始化数据库

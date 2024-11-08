@@ -1,23 +1,36 @@
 source 'https://rubygems.org'
 
-gem 'importmap-rails'
-gem 'jbuilder'
-gem 'pg', '~> 1.5'
-gem 'puma', '>= 5.0'
-gem 'rails', '~> 7.2.1', '>= 7.2.1.1'
+ruby file: ".ruby-version"
+
+# Drivers
+gem "pg", "~> 1.5"
 gem 'redis', '~> 5.0'
+
+# Deployment
+gem "puma", ">= 5.0"
+gem "bootsnap", require: false
+gem "rails", "~> 7.2.2"
+gem 'rack-cors'
+
+# Hotwire
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
-# gem "kredis"
-gem 'bcrypt', '~> 3.1.7'
-gem 'bootsnap', require: false
-gem 'devise'
-gem 'jwt'
+
+# rswag
 gem 'rswag'
 gem 'rswag-api'
 gem 'rswag-ui'
+
+# Authenticated encryption
+gem 'bcrypt', '~> 3.1.7'
+gem 'devise'
+gem 'jwt'
+
+gem 'importmap-rails'
+gem 'jbuilder'
 gem 'tzinfo-data', platforms: %i[windows jruby]
+
 group :development, :test do
   gem 'brakeman', require: false
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'

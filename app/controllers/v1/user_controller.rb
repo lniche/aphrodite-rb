@@ -2,9 +2,6 @@ module V1
   class UsersController < ApplicationController
     before_action :set_user, only: %i[show update destroy]
 
-    # GET /api/v1/users/:id
-    swagger_controller :users, '用户管理'
-
     swagger_api :show do
       summary '获取用户信息'
       param :path, :id, :integer, :required, '用户ID'
