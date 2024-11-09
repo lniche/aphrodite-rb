@@ -1,33 +1,30 @@
 module V1
   class UsersController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_user, only: [:get, :update, :destroy]
 
     def get
-      render json: @user
+      user_code = params[:user_code]
+      user = User.find_by_user_code(user_code)
+      if user
+        render json: user, only: [:user_code, :user_no, :phone, :nickname, :email]
+      else
+        render json: @current_user, only: [:user_code, :user_no, :phone, :nickname, :email]
+      end
     end
 
     def update
-      if @user.update(user_params)
-        render json: @user, status: :ok
+      update_req = Requests::UserUpdateReq.new(params[:user])
+      if update_req.valid? && @current_user.update(user_params.to_h)
+        render json: ApiResponse.ok(), status: :ok
       else
-        render json: { error: @user.errors.full_messages }, status: :unprocessable_entity
+        render json: ApiResponse.err(), status: :unprocessable_entity
       end
     end
 
     def destroy
-      @user.update(deleted_at: Time.current, status: 3)
-      head :no_content
+      @current_user.update(deleted_at: Time.current, status: 3)
+      render json: ApiResponse.ok(), status: :ok
     end
 
-    private
-
-    def set_user
-      @user = current_user
-    end
-
-    def user_params
-      params.require(:user).permit(:nickname, :email)
-    end
   end
 end

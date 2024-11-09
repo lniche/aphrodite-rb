@@ -7,7 +7,17 @@ RSpec.describe 'v1/auth', type: :request do
     post('send-code auth') do
       description 'Send Verification Code'
       tags 'Auth'
-      produces 'application/json'
+      consumes 'application/json'
+      parameter in: :body, schema: {
+        type: :object,
+        properties: {
+          phone: {
+            type: :string,
+            example: '13800138000'
+          }
+        },
+        required: [ 'phone' ]
+      }
       response(200, 'successful') do
 
         after do |example|
@@ -27,7 +37,21 @@ RSpec.describe 'v1/auth', type: :request do
     post('login auth') do
       description 'User Registration/Login'
       tags 'Auth'
-      produces 'application/json'
+      consumes 'application/json'
+      parameter in: :body, schema: {
+        type: :object,
+        properties: {
+          phone: {
+            type: :string,
+            example: '13800138000'
+          },
+          code: {
+            type: :string,
+            example: '1234'
+          }
+        },
+        required: [ 'phone', 'code' ]
+      }
       response(200, 'successful') do
 
         after do |example|
@@ -47,7 +71,7 @@ RSpec.describe 'v1/auth', type: :request do
     post('logout auth') do
       description 'User Logout'
       tags 'Auth'
-      produces 'application/json'
+      consumes 'application/json'
       security [ { BearerAuth: [] } ] 
       response(200, 'successful') do
 

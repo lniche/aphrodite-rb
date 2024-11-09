@@ -1,11 +1,17 @@
 class Requests::SendVerifyCodeReq
-  include ActiveModel::Model
+  include ActiveModel::Validations
 
   attr_accessor :phone
 
-  validates :phone, presence: true, format: { with: /\A\d{11}\z/, message: "must be 11 digits" }
+  validates :phone, presence: true, allow_blank: false
 
-  def self.example
-    { phone: "13800138000" }
+  def initialize(params)
+    @phone = params[:phone]
+  end
+
+  def to_h
+    {
+      phone: @phone
+    }
   end
 end

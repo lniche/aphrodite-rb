@@ -2,7 +2,6 @@
 /.bundle/
 
 # Ignore the log files and temp files.
-log/
 *log.*
 tmp/*
 

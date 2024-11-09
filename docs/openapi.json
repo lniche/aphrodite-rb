@@ -16,7 +16,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8000",
+      "url": "http://127.0.0.1:8000",
       "description": "Development Environment"
     },
     {
@@ -32,9 +32,30 @@
         "tags": [
           "Auth"
         ],
+        "parameters": [
+
+        ],
         "responses": {
           "200": {
             "description": "successful"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string",
+                    "example": "13800138000"
+                  }
+                },
+                "required": [
+                  "phone"
+                ]
+              }
+            }
           }
         }
       }
@@ -46,9 +67,35 @@
         "tags": [
           "Auth"
         ],
+        "parameters": [
+
+        ],
         "responses": {
           "200": {
             "description": "successful"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string",
+                    "example": "13800138000"
+                  },
+                  "code": {
+                    "type": "string",
+                    "example": "1234"
+                  }
+                },
+                "required": [
+                  "phone",
+                  "code"
+                ]
+              }
+            }
           }
         }
       }
@@ -62,7 +109,9 @@
         ],
         "security": [
           {
-            "BearerAuth": []
+            "BearerAuth": [
+
+            ]
           }
         ],
         "responses": {
