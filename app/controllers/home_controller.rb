@@ -6,6 +6,6 @@ class HomeController < ApplicationController
   end
 
   def ping
-    render json: { code: '0',message: 'pong', data:nil }
+    render json: { code: '0', message: 'pong', data: nil }
   end
 end

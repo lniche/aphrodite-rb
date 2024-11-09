@@ -2,7 +2,6 @@ require_relative 'boot'
 require 'rails/all'
 require_relative '../app/middleware/request_id_middleware'
 
-
 Bundler.require(*Rails.groups)
 
 module AphroditeRb
@@ -17,6 +16,5 @@ module AphroditeRb
       trace_id = Thread.current[:request_id] || 'unknown'
       "[#{timestamp.strftime('%Y-%m-%d %H:%M:%S')}] #{severity} [#{trace_id}] #{msg}\n"
     end
-
   end
 end

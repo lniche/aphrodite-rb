@@ -6,10 +6,10 @@ class User < ApplicationRecord
   validates :user_code, presence: true, uniqueness: true
   validates :user_no, presence: true, uniqueness: true
   validates :phone, presence: true, uniqueness: true
-  validates :status, inclusion: { in: [0, 1, 2, 3], message: "%{value} is not a valid status" }
+  validates :status, inclusion: { in: [0, 1, 2, 3], message: '%<value>s is not a valid status' }
 
   scope :active, -> { where(status: 1) }
-  
+
   scope :unactivated, -> { where(status: 0) }
 
   scope :frozen, -> { where(status: 2) }
@@ -21,15 +21,15 @@ class User < ApplicationRecord
   end
 
   def activate
-    update(status: 1) 
+    update(status: 1)
   end
 
   def restore
-    update(status: 1, deleted_at: nil) 
+    update(status: 1, deleted_at: nil)
   end
 
   def soft_delete
-    update(status: 3, deleted_at: Time.current) 
+    update(status: 3, deleted_at: Time.current)
   end
 
   def deleted?
@@ -45,5 +45,4 @@ class User < ApplicationRecord
   def update_updated_at
     self.updated_at = Time.current
   end
-  
 end

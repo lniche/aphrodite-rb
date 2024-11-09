@@ -6,12 +6,11 @@ RSpec.describe 'v1/user', type: :request do
       tags 'User'
       produces 'application/json'
       parameter name: :user_code, in: :query, type: :string, description: 'User Code'
-      security [ { BearerAuth: [] } ] 
+      security [{ BearerAuth: [] }]
       response '200', 'Successful Response' do
         schema '$ref' => '#/components/schemas/user'
         run_test!
       end
-
     end
   end
 
@@ -20,13 +19,12 @@ RSpec.describe 'v1/user', type: :request do
       tags 'User'
       consumes 'application/json'
       produces 'application/json'
-      parameter  in: :body, schema: {'$ref' => '#/components/schemas/user'}
-      security [ { BearerAuth: [] } ] 
+      parameter in: :body, schema: { '$ref' => '#/components/schemas/user' }
+      security [{ BearerAuth: [] }]
       response '200', 'Successful Response' do
         schema '$ref' => '#/components/schemas/ok_object'
         run_test!
       end
-
     end
   end
 
@@ -35,7 +33,7 @@ RSpec.describe 'v1/user', type: :request do
       tags 'User'
       consumes 'application/json'
       produces 'application/json'
-      security [ { BearerAuth: [] } ] 
+      security [{ BearerAuth: [] }]
       response '200', 'Successful Response' do
         schema '$ref' => '#/components/schemas/ok_object'
         run_test!
