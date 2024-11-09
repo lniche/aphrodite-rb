@@ -30,19 +30,19 @@ Aphrodite is a template project based on [Rails](https://rubyonrails.org) that a
 
 ```
 .
-├── app/ # Application core code
-├── bin/ # Executable script
-├── config/ # Configuration file
-├── db/ # Database related
-├── deploy/ # Deployment related files
-├── docs/ # Project documentation
-├── lib/ # Custom library files
-├── public/ # Public resources
-├── storage/ # File storage
-├── test/ # Test files
-├── tmp/ # Temporary files
-├── vendor/ # Third-party code
-└── README.md # Project description
+├── app/        # Core application code
+├── bin/        # Executable scripts
+├── config/     # Configuration files
+├── db/         # Database files
+├── deploy/     # Deployment files
+├── docs/       # Documentation
+├── lib/        # Custom libraries
+├── public/     # Public assets
+├── storage/    # File storage
+├── test/       # Tests
+├── tmp/        # Temporary files
+├── vendor/     # Third-party libraries
+└── README.md   # Project description
 ```
 
 ## Run Local
