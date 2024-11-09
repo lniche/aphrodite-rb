@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  
+  before_update :update_updated_at
+
   self.table_name = 't_user'
 
   validates :user_code, presence: true, uniqueness: true
@@ -38,4 +39,11 @@ class User < ApplicationRecord
   def self.find_by_user_code(user_code)
     find_by(user_code: user_code)
   end
+
+  private
+
+  def update_updated_at
+    self.updated_at = Time.current
+  end
+  
 end

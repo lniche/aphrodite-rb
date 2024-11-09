@@ -6,6 +6,89 @@
     "version": "1.0.0"
   },
   "components": {
+    "schemas": {
+      "ok_object": {
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 0
+          },
+          "message": {
+            "type": "string",
+            "example": "ok"
+          },
+          "data": {
+            "type": "object"
+          }
+        }
+      },
+      "err_object": {
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": -1
+          },
+          "message": {
+            "type": "string",
+            "example": "err"
+          },
+          "data": {
+            "type": "object"
+          }
+        }
+      },
+      "user": {
+        "properties": {
+          "user_code": {
+            "type": "string",
+            "example": "100000",
+            "description": "User Code"
+          },
+          "user_no": {
+            "type": "string",
+            "example": "A8000",
+            "description": "User No"
+          },
+          "phone": {
+            "type": "string",
+            "example": "13800138000",
+            "description": "User Phone"
+          },
+          "nickname": {
+            "type": "string",
+            "example": "john",
+            "description": "User Nickname"
+          },
+          "email": {
+            "type": "string",
+            "example": "john@example.com",
+            "description": "User Email"
+          }
+        }
+      },
+      "login_req": {
+        "properties": {
+          "phone": {
+            "type": "string",
+            "example": "13800138000"
+          },
+          "code": {
+            "type": "string",
+            "example": "1234",
+            "description": "Verification code for user registration"
+          }
+        }
+      },
+      "send_req": {
+        "properties": {
+          "phone": {
+            "type": "string",
+            "example": "13800138000",
+            "description": "User phone number"
+          }
+        }
+      }
+    },
     "securitySchemes": {
       "BearerAuth": {
         "type": "http",
@@ -27,8 +110,7 @@
   "paths": {
     "/v1/send-code": {
       "post": {
-        "summary": "send-code auth",
-        "description": "Send Verification Code",
+        "summary": "Send Verification Code",
         "tags": [
           "Auth"
         ],
@@ -37,23 +119,21 @@
         ],
         "responses": {
           "200": {
-            "description": "successful"
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ok_object"
+                }
+              }
+            }
           }
         },
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "phone": {
-                    "type": "string",
-                    "example": "13800138000"
-                  }
-                },
-                "required": [
-                  "phone"
-                ]
+                "$ref": "#/components/schemas/send_req"
               }
             }
           }
@@ -62,8 +142,7 @@
     },
     "/v1/login": {
       "post": {
-        "summary": "login auth",
-        "description": "User Registration/Login",
+        "summary": "User Registration/Login",
         "tags": [
           "Auth"
         ],
@@ -72,28 +151,21 @@
         ],
         "responses": {
           "200": {
-            "description": "successful"
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ok_object"
+                }
+              }
+            }
           }
         },
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "phone": {
-                    "type": "string",
-                    "example": "13800138000"
-                  },
-                  "code": {
-                    "type": "string",
-                    "example": "1234"
-                  }
-                },
-                "required": [
-                  "phone",
-                  "code"
-                ]
+                "$ref": "#/components/schemas/login_req"
               }
             }
           }
@@ -102,8 +174,7 @@
     },
     "/v1/logout": {
       "post": {
-        "summary": "logout auth",
-        "description": "User Logout",
+        "summary": "User Logout",
         "tags": [
           "Auth"
         ],
@@ -116,7 +187,113 @@
         ],
         "responses": {
           "200": {
-            "description": "successful"
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ok_object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/user": {
+      "get": {
+        "summary": "User Info",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "user_code",
+            "in": "query",
+            "description": "User Code",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/user"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "User Update",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+
+        ],
+        "security": [
+          {
+            "BearerAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ok_object"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/user"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "User Delete",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "BearerAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ok_object"
+                }
+              }
+            }
           }
         }
       }

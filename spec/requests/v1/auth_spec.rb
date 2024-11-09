@@ -4,29 +4,15 @@ RSpec.describe 'v1/auth', type: :request do
 
   path '/v1/send-code' do
 
-    post('send-code auth') do
-      description 'Send Verification Code'
+    post('Send Verification Code') do
       tags 'Auth'
       consumes 'application/json'
-      parameter in: :body, schema: {
-        type: :object,
-        properties: {
-          phone: {
-            type: :string,
-            example: '13800138000'
-          }
-        },
-        required: [ 'phone' ]
-      }
-      response(200, 'successful') do
+      produces 'application/json'
+      parameter  in: :body, schema: {'$ref' => '#/components/schemas/send_req'}
 
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
+      response(200, 'Successful Response') do
+        schema '$ref' => '#/components/schemas/ok_object'
+
         run_test!
       end
     end
@@ -34,33 +20,15 @@ RSpec.describe 'v1/auth', type: :request do
 
   path '/v1/login' do
 
-    post('login auth') do
-      description 'User Registration/Login'
+    post('User Registration/Login') do
       tags 'Auth'
       consumes 'application/json'
-      parameter in: :body, schema: {
-        type: :object,
-        properties: {
-          phone: {
-            type: :string,
-            example: '13800138000'
-          },
-          code: {
-            type: :string,
-            example: '1234'
-          }
-        },
-        required: [ 'phone', 'code' ]
-      }
-      response(200, 'successful') do
+      produces 'application/json'
+      parameter  in: :body, schema: {'$ref' => '#/components/schemas/login_req'}
 
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
+      response(200, 'Successful Response') do
+        schema '$ref' => '#/components/schemas/ok_object'
+
         run_test!
       end
     end
@@ -68,20 +36,14 @@ RSpec.describe 'v1/auth', type: :request do
 
   path '/v1/logout' do
 
-    post('logout auth') do
-      description 'User Logout'
+    post('User Logout') do
       tags 'Auth'
       consumes 'application/json'
+      produces 'application/json'
       security [ { BearerAuth: [] } ] 
-      response(200, 'successful') do
+      response(200, 'Successful Response') do
+        schema '$ref' => '#/components/schemas/ok_object'
 
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
         run_test!
       end
     end
