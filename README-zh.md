@@ -4,18 +4,35 @@ Aphrodite 是一个基于 [Rails](https://rubyonrails.org) 开发的模板项目
 
 ## 技术栈
 
-| 技术                                                      | 说明                                           |
-| --------------------------------------------------------- | ---------------------------------------------- |
-| [tokio](https://github.com/tokio-rs/tokio)                | 异步运行时，支持多种异步功能和全特性           |
-| [clap](https://github.com/clap-rs/clap)                   | 命令行参数解析库，支持衍生宏                   |
-| [thiserror](https://github.com/dtolnay/thiserror)         | 错误处理库，提供简洁的错误定义                 |
-| [anyhow](https://github.com/dtolnay/anyhow)               | 灵活的错误处理库，适用于简化错误传播           |
-| [base64](https://crates.io/crates/base64)                 | Base64 编码和解码库                            |
-| [time](https://crates.io/crates/time)                     | 时间处理库，支持宏、本地时区、格式化和解析功能 |
-| [serde](https://serde.rs/)                                | 数据序列化和反序列化库，支持衍生宏             |
-| [serde_json](https://crates.io/crates/serde_json)         | JSON 数据序列化和反序列化库                    |
-| [tracing](https://github.com/tokio-rs/tracing)            | 异步应用日志框架                               |
-| [tracing-subscriber](https://github.com/tokio-rs/tracing) | 日志订阅者，支持 JSON 格式                     |
+| 技术                                                                     | 说明                                                                                                |
+| ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| [pg](https://rubygems.org/gems/pg)                                       | PostgreSQL 数据库适配器，提供与 PostgreSQL 数据库的连接和操作功能。                                 |
+| [redis](https://rubygems.org/gems/redis)                                 | Redis 客户端库，用于在 Rails 应用中与 Redis 数据库交互，支持缓存、消息队列等功能。                  |
+| [puma](https://rubygems.org/gems/puma)                                   | 高性能的 Ruby Web 服务器，广泛用于部署 Rails 应用，支持多线程和多进程模式。                         |
+| [bootsnap](https://rubygems.org/gems/bootsnap)                           | 提速 Rails 应用启动时间的工具，优化加载过程，减少每次请求的启动时间。                               |
+| [rails](https://rubygems.org/gems/rails)                                 | Rails 框架的核心库，提供全面的 MVC 架构，适用于快速开发 Web 应用程序。                              |
+| [rack-cors](https://rubygems.org/gems/rack-cors)                         | 用于处理跨域请求（CORS）的中间件库，使得跨域访问成为可能。                                          |
+| [sprockets-rails](https://rubygems.org/gems/sprockets-rails)             | 处理 Rails 中的 JavaScript 和 CSS 文件的预处理器，用于将多种资源合并和压缩。                        |
+| [stimulus-rails](https://rubygems.org/gems/stimulus-rails)               | 通过 StimulusJS 实现的 Rails 框架集成，用于构建复杂的前端交互。                                     |
+| [turbo-rails](https://rubygems.org/gems/turbo-rails)                     | Hotwire 的一部分，优化网页的速度和用户体验，通过增加 Turbo 功能，使得无需完整页面刷新即可更新界面。 |
+| [rswag](https://rubygems.org/gems/rswag)                                 | 用于生成和展示 API 文档的库，支持 Swagger API 文档规范。                                            |
+| [rswag-api](https://rubygems.org/gems/rswag-api)                         | 提供 API 文档生成、请求验证等功能，用于自动化生成符合 Swagger 规范的 API 文档。                     |
+| [rswag-ui](https://rubygems.org/gems/rswag-ui)                           | 提供用于展示 Swagger API 文档的 UI，支持与 `rswag-api` 结合生成交互式 API 文档界面。                |
+| [bcrypt](https://rubygems.org/gems/bcrypt)                               | 用于加密密码和实现安全认证的库，提供密码哈希功能。                                                  |
+| [devise](https://rubygems.org/gems/devise)                               | Rails 用户认证解决方案，提供注册、登录、密码重置等功能。                                            |
+| [jwt](https://rubygems.org/gems/jwt)                                     | JSON Web Token (JWT) 的 Ruby 实现，用于处理令牌生成和验证。                                         |
+| [importmap-rails](https://rubygems.org/gems/importmap-rails)             | 使用导入映射管理前端 JavaScript 资源，避免了包管理器和打包过程的复杂性。                            |
+| [jbuilder](https://rubygems.org/gems/jbuilder)                           | 用于生成 JSON 响应的 Ruby 库，适用于 Rails API 开发。                                               |
+| [tzinfo-data](https://rubygems.org/gems/tzinfo-data)                     | 提供时区数据的库，确保 Rails 应用在 Windows 或 JRuby 平台上的时区支持。                             |
+| [brakeman](https://rubygems.org/gems/brakeman)                           | 用于检查 Rails 应用中的安全漏洞的静态分析工具。                                                     |
+| [debug](https://rubygems.org/gems/debug)                                 | Ruby 内置调试工具，在开发中用于调试应用。                                                           |
+| [dotenv-rails](https://rubygems.org/gems/dotenv-rails)                   | 用于加载 `.env` 文件中的环境变量，便于在开发环境中管理配置。                                        |
+| [rubocop-rails-omakase](https://rubygems.org/gems/rubocop-rails-omakase) | 提供 Rails 项目特定的 RuboCop 规则，自动检查代码风格。                                              |
+| [rspec-rails](https://rubygems.org/gems/rspec-rails)                     | Rails 测试框架集成，用于编写和运行 RSpec 测试。                                                     |
+| [rswag-specs](https://rubygems.org/gems/rswag-specs)                     | 用于编写 Swagger 规范的 RSpec 扩展，支持 API 文档的自动化生成。                                     |
+| [web-console](https://rubygems.org/gems/web-console)                     | Rails 开发工具，允许在浏览器中直接运行 Ruby 代码，便于调试。                                        |
+| [capybara](https://rubygems.org/gems/capybara)                           | Web 应用自动化测试工具，提供了模拟用户与浏览器交互的功能，适合集成测试和验收测试。                  |
+| [selenium-webdriver](https://rubygems.org/gems/selenium-webdriver)       | 用于控制浏览器进行自动化测试的库，支持多种浏览器，常用于 UI 测试。                                  |
 
 ## 特性
 
