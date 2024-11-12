@@ -13,7 +13,7 @@ module AphroditeRb
 
     Rails.logger = Logger.new(STDOUT)
     Rails.logger.formatter = proc do |severity, timestamp, progname, msg|
-      trace_id = Thread.current[:request_id] || 'unknown'
+      trace_id = Thread.current[:request_id] || ''
       "[#{timestamp.strftime('%Y-%m-%d %H:%M:%S')}] #{severity} [#{trace_id}] #{msg}\n"
     end
   end
