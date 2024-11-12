@@ -1,9 +1,6 @@
-class Requests::UserUpdateReq
-  include ActiveModel::Validations
+class Requests::UpdateUserRequset
 
   attr_accessor :nickname, :email
-
-  validates :nickname, :email
 
   def initialize(params)
     @nickname = params[:nickname]

@@ -1,4 +1,4 @@
-class Requests::LoginReq
+class Requests::LoginRequset
   include ActiveModel::Validations
 
   attr_accessor :phone, :code

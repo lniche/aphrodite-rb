@@ -4,17 +4,25 @@ module V1
 
     def get
       user_code = params[:user_code]
-      user = User.find_by_user_code(user_code)
-      if user
-        render json: user, only: %i[user_code user_no phone nickname email]
+      user = if user_code.present?
+        User.find_by_user_code(user_code)
       else
-        render json: @current_user, only: %i[user_code user_no phone nickname email]
+        nil
       end
+      user ||= @current_user
+      get_user_response = GetUserResponse.new(
+        nickname: user.nickname,
+        user_no: user.user_no,
+        user_code: user.user_code,
+        email: user.email,
+        phone: user.phone
+      )
+      render json: ApiResponse.ok(get_user_response)
     end
 
     def update
-      update_req = Requests::UserUpdateReq.new(params[:user])
-      if update_req.valid? && @current_user.update(user_params.to_h)
+      update_user_requset = Requests::UpdateUserRequest.new(params[:user])
+      if update_user_requset.valid? && @current_user.update(user_params.to_h)
         render json: ApiResponse.ok, status: :ok
       else
         render json: ApiResponse.err, status: :unprocessable_entity

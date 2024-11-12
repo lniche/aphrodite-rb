@@ -12,17 +12,15 @@ module ApiResponse
 end
 
 module ResponseStatus
-  # 使用 freeze 防止修改
-  SUCCESS = { code: 0, message: '请求成功' }.freeze
-  UNAUTHORIZED = { code: 401, message: '未授权' }.freeze
-  FORBIDDEN = { code: 403, message: '禁止访问' }.freeze
-  NOT_FOUND = { code: 404, message: '未找到资源' }.freeze
-  INTERNAL_SERVER_ERROR = { code: 500, message: '服务器内部错误' }.freeze
-  BAD_REQUEST = { code: 400, message: '请求无效' }.freeze
-  VALIDATION_ERROR = { code: 422, message: '验证失败' }.freeze
-  METHOD_NOT_ALLOWED = { code: 405, message: '方法不允许' }.freeze
+  SUCCESS = { code: 0, message: 'Request Successful' }.freeze
+  UNAUTHORIZED = { code: 401, message: 'Unauthorized' }.freeze
+  FORBIDDEN = { code: 403, message: 'Forbidden' }.freeze
+  NOT_FOUND = { code: 404, message: 'Resource Not Found' }.freeze
+  INTERNAL_SERVER_ERROR = { code: 500, message: 'Internal Server Error' }.freeze
+  BAD_REQUEST = { code: 400, message: 'Bad Request' }.freeze
+  VALIDATION_ERROR = { code: 422, message: 'Validation Failed' }.freeze
+  METHOD_NOT_ALLOWED = { code: 405, message: 'Method Not Allowed' }.freeze
 
-  # 用方法返回错误，避免手动重复写状态码和消息
   def self.success
     SUCCESS
   end
