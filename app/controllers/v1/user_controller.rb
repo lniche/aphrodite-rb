@@ -22,7 +22,7 @@ module V1
 
     def update
       update_user_requset = Requests::UpdateUserRequest.new(params[:user])
-      if update_user_requset.valid? && @current_user.update(user_params.to_h)
+      if update_user_requset.valid? && @current_user.update(update_user_requset.to_h)
         render json: ApiResponse.ok, status: :ok
       else
         render json: ApiResponse.err, status: :unprocessable_entity

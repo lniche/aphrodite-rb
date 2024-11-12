@@ -1,4 +1,4 @@
-class Requests::SendVerifyCodeRequset
+class Requests::V1::SendVerifyCodeRequest
   include ActiveModel::Validations
 
   attr_accessor :phone

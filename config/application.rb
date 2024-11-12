@@ -8,7 +8,7 @@ module AphroditeRb
   class Application < Rails::Application
     config.load_defaults 7.2
     config.autoload_lib(ignore: %w[assets tasks])
-    # config.time_zone = "UTC"
+    config.time_zone = "UTC"
     config.middleware.use RequestIdMiddleware
 
     Rails.logger = Logger.new(STDOUT)
