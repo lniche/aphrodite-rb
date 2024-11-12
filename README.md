@@ -84,6 +84,9 @@ db/init.sql
 
 # 5. Start the service
 bin/rails server
+
+# generate swagger
+rake rswag:specs:swaggerize
 ```
 
 ## Repo Activity
