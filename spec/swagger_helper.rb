@@ -15,21 +15,18 @@ RSpec.configure do |config|
       },
       components: {
         schemas: {
-          ok_object: {
+          login_response: {
             properties: {
-              code: { type: 'integer', example: 0 },
-              message: { type: 'string', example: 'ok' },
-              data: { type: 'object' }
+              access_token: { type: :string, example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...', description: 'Access token' },
             }
           },
-          err_object: {
+          update_user_request: {
             properties: {
-              code: { type: 'integer', example: -1 },
-              message: { type: 'string', example: 'err' },
-              data: { type: 'object' }
+              nickname: { type: :string, example: 'john', description: 'User Nickname' },
+              email: { type: :string, example: 'john@example.com', description: 'User Email' }
             }
           },
-          user: {
+          get_user_response: {
             properties: {
               user_code: { type: :string, example: '100000', description: 'User Code' },
               user_no: { type: :string, example: 'A8000', description: 'User No' },
@@ -38,7 +35,7 @@ RSpec.configure do |config|
               email: { type: :string, example: 'john@example.com', description: 'User Email' }
             }
           },
-          login_req: {
+          login_request: {
             properties: {
               phone: {
                 type: :string,
@@ -47,25 +44,26 @@ RSpec.configure do |config|
               code: {
                 type: :string,
                 example: '1234',
-                description: 'Verification code for user registration'
+                description: 'Verification code'
               }
             }
           },
-          send_req: {
+          send_verifycode_request: {
             properties: {
               phone: {
                 type: :string,
                 example: '13800138000',
-                description: 'User phone number'
+                description: 'User Phone'
               }
             }
           }
         },
         securitySchemes: {
-          BearerAuth: {
+          Authorization: {
             type: 'http',
             scheme: 'bearer',
-            bearerFormat: 'JWT'
+            bearerFormat: 'JWT',
+            description: 'JWT Bearer Token authentication'
           }
         }
       },

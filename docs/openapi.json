@@ -7,37 +7,30 @@
   },
   "components": {
     "schemas": {
-      "ok_object": {
+      "login_response": {
         "properties": {
-          "code": {
-            "type": "integer",
-            "example": 0
-          },
-          "message": {
+          "access_token": {
             "type": "string",
-            "example": "ok"
-          },
-          "data": {
-            "type": "object"
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+            "description": "Access token"
           }
         }
       },
-      "err_object": {
+      "update_user_request": {
         "properties": {
-          "code": {
-            "type": "integer",
-            "example": -1
-          },
-          "message": {
+          "nickname": {
             "type": "string",
-            "example": "err"
+            "example": "john",
+            "description": "User Nickname"
           },
-          "data": {
-            "type": "object"
+          "email": {
+            "type": "string",
+            "example": "john@example.com",
+            "description": "User Email"
           }
         }
       },
-      "user": {
+      "get_user_response": {
         "properties": {
           "user_code": {
             "type": "string",
@@ -66,7 +59,7 @@
           }
         }
       },
-      "login_req": {
+      "login_request": {
         "properties": {
           "phone": {
             "type": "string",
@@ -75,25 +68,26 @@
           "code": {
             "type": "string",
             "example": "1234",
-            "description": "Verification code for user registration"
+            "description": "Verification code"
           }
         }
       },
-      "send_req": {
+      "send_verifycode_request": {
         "properties": {
           "phone": {
             "type": "string",
             "example": "13800138000",
-            "description": "User phone number"
+            "description": "User Phone"
           }
         }
       }
     },
     "securitySchemes": {
-      "BearerAuth": {
+      "Authorization": {
         "type": "http",
         "scheme": "bearer",
-        "bearerFormat": "JWT"
+        "bearerFormat": "JWT",
+        "description": "JWT Bearer Token authentication"
       }
     }
   },
@@ -112,18 +106,29 @@
       "post": {
         "summary": "Send Verification Code",
         "tags": [
-          "Auth"
+          "Auth Module"
         ],
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ok_object"
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "ok"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
                 }
               }
             }
@@ -133,7 +138,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/send_req"
+                "$ref": "#/components/schemas/send_verifycode_request"
               }
             }
           }
@@ -144,18 +149,16 @@
       "post": {
         "summary": "User Registration/Login",
         "tags": [
-          "Auth"
+          "Auth Module"
         ],
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ok_object"
+                  "$ref": "#/components/schemas/login_response"
                 }
               }
             }
@@ -165,7 +168,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/login_req"
+                "$ref": "#/components/schemas/login_request"
               }
             }
           }
@@ -176,13 +179,11 @@
       "post": {
         "summary": "User Logout",
         "tags": [
-          "Auth"
+          "Auth Module"
         ],
         "security": [
           {
-            "BearerAuth": [
-
-            ]
+            "Authorization": []
           }
         ],
         "responses": {
@@ -191,7 +192,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ok_object"
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "ok"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
                 }
               }
             }
@@ -203,7 +217,7 @@
       "get": {
         "summary": "User Info",
         "tags": [
-          "User"
+          "User Module"
         ],
         "parameters": [
           {
@@ -217,9 +231,7 @@
         ],
         "security": [
           {
-            "BearerAuth": [
-
-            ]
+            "Authorization": []
           }
         ],
         "responses": {
@@ -228,7 +240,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/user"
+                  "$ref": "#/components/schemas/get_user_response"
                 }
               }
             }
@@ -238,16 +250,12 @@
       "put": {
         "summary": "User Update",
         "tags": [
-          "User"
+          "User Module"
         ],
-        "parameters": [
-
-        ],
+        "parameters": [],
         "security": [
           {
-            "BearerAuth": [
-
-            ]
+            "Authorization": []
           }
         ],
         "responses": {
@@ -256,7 +264,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ok_object"
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "ok"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
                 }
               }
             }
@@ -266,7 +287,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/user"
+                "$ref": "#/components/schemas/update_user_request"
               }
             }
           }
@@ -275,13 +296,11 @@
       "delete": {
         "summary": "User Delete",
         "tags": [
-          "User"
+          "User Module"
         ],
         "security": [
           {
-            "BearerAuth": [
-
-            ]
+            "Authorization": []
           }
         ],
         "responses": {
@@ -290,7 +309,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ok_object"
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "ok"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
                 }
               }
             }
