@@ -18,16 +18,16 @@ module V1
     end
 
     def login
-      login_req = Requests::LoginRequset.new(params[:auth])
-      if login_req.valid?
-        if login_req.code != '9999' || !(Rails.env.development? || Rails.env.test?)
-          cached_code = Rails.cache.read("#{CacheKeys::SMS_CODE}#{login_req.phone}")
-          if cached_code.nil? || cached_code != login_req.code
+      login_request = Requests::LoginRequset.new(params[:auth])
+      if login_request.valid?
+        if login_request.code != '9999' || !(Rails.env.development? || Rails.env.test?)
+          cached_code = Rails.cache.read("#{CacheKeys::SMS_CODE}#{login_request.phone}")
+          if cached_code.nil? || cached_code != login_request.code
             return render json: ApiResponse.err,
                           status: :unauthorized
           end
         end
-        user = User.find_by(phone: login_req.phone)
+        user = User.find_by(phone: login_request.phone)
         if user
           payload = { user_code: user.user_code, exp: 24.hours.from_now.to_i }
           token = JwtService.encode(payload)
@@ -35,7 +35,7 @@ module V1
           login_response = LoginResponse.new(access_token:token)
           render json: ApiResponse.ok(login_response), status: :ok
         else
-          nickname = "SUGAR_#{login_req.phone[-4..-1]}"
+          nickname = "SUGAR_#{login_request.phone[-4..-1]}"
           redis = Rails.application.config.redis
           user_no = redis.get(CacheKeys::NEXT_UNO) || 100_000
           redis.set(CacheKeys::NEXT_UNO, user_no) if user_no == 100_000
@@ -45,7 +45,7 @@ module V1
           payload = { user_code: user_code, exp: 24.hours.from_now.to_i }
           token = JwtService.encode(payload)
           User.create(
-            phone: login_req.phone,
+            phone: login_request.phone,
             nickname: nickname,
             user_no: user_no,
             user_code: user_code,
