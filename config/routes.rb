@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   end
 
   # get 'up' => 'rails/health#show', as: :rails_health_check
-  get 'ping', to: 'home#ping'
-  root to: 'home#root'
+  get 'ping', to: 'health#ping'
+  root to: 'health#root'
 end
