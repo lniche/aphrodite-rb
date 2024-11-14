@@ -21,7 +21,7 @@ module V1
     end
 
     def update
-      update_user_requset = Requests::UpdateUserRequest.new(params[:user])
+      update_user_requset = Requests::V1::UpdateUserRequest.new(params[:user])
       if update_user_requset.valid? && @current_user.update(update_user_requset.to_h)
         render json: ApiResponse.ok, status: :ok
       else

@@ -5,6 +5,7 @@ ruby file: ".ruby-version"
 # Drivers
 gem "pg", "~> 1.5"
 gem 'redis', '~> 5.0'
+gem 'connection_pool'
 
 # Deployment
 gem "puma", ">= 5.0"
