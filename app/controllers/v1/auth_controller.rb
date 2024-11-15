@@ -34,7 +34,7 @@ module V1
           payload = { user_code: user.user_code, exp: 24.hours.from_now.to_i }
           token = JwtService.encode(payload)
           user.update(
-            login_at: Time.current, 
+            login_at: Time.current,
             login_token: token,
             client_ip: request.remote_ip,
           )
