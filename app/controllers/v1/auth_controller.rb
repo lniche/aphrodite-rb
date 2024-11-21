@@ -29,6 +29,11 @@ module V1
         if cache_code.nil? || cache_code != login_request.code
           return render json: ApiResponse.err("Verification code is incorrect, please re-enter"), status: :unauthorized
         end
+        client_ip = request.remote_ip
+        if client_ip.nil? || !client_ip.match?(/\A(\d{1,3}\.){3}\d{1,3}\z/)
+          Rails.logger.warn("Invalid or missing IP: #{client_ip}")
+          client_ip = '0.0.0.0'
+        end
         user = User.find_by(phone: login_request.phone)
         if user
           payload = { user_code: user.user_code, exp: 24.hours.from_now.to_i }
@@ -36,7 +41,9 @@ module V1
           user.update(
             login_at: Time.current,
             login_token: token,
-            client_ip: request.remote_ip,
+            client_ip: client_ip,
+            updated_at: Time.current,
+            updated_by: '777'
           )
         else
           nickname = "SUGAR_#{login_request.phone[-4..-1]}"
@@ -46,19 +53,20 @@ module V1
           user_code = Snowflake.new(1, 1).generate_id
           payload = { user_code: user_code, exp: 24.hours.from_now.to_i }
           token = JwtService.encode(payload)
-          User.create(
+          user = User.create(
             phone: login_request.phone,
             nickname: nickname,
             user_no: user_no,
             user_code: user_code,
             login_at: Time.current,
             login_token: token,
-            client_ip: request.remote_ip,
+            client_ip: client_ip,
             created_at: Time.current,
             created_by: '777'
           )
+          Rails.logger.debug("Created user: #{user.inspect}")
         end
-        login_response = LoginResponse.new(access_token: user.login_token)
+        login_response = Responses::V1::LoginResponse.new(access_token: user.login_token)
         Rails.cache.delete(cache_key)
         render json: ApiResponse.ok(login_response), status: :ok
       else

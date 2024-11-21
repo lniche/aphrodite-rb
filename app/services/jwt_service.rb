@@ -1,14 +1,13 @@
 class JwtService
-  SECRET_KEY = Rails.application.credentials.secret_key_base # 从Rails secrets读取密钥
+  SECRET_KEY = Rails.application.credentials.secret_key_base
+  ALGORITHM = 'HS256'
 
-  # 生成 JWT
   def self.encode(payload)
-    JWT.encode(payload, SECRET_KEY)
+    JWT.encode(payload, SECRET_KEY,ALGORITHM)
   end
 
-  # 解码 JWT
   def self.decode(token)
-    body = JWT.decode(token, SECRET_KEY)[0]
+    body = JWT.decode(token, SECRET_KEY, true, { algorithm: ALGORITHM })[0]
     HashWithIndifferentAccess.new(body)
   rescue JWT::DecodeError
     nil

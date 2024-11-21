@@ -22,13 +22,7 @@ RSpec.describe 'v1/user', type: :request do
       parameter in: :body, schema: { '$ref' => '#/components/schemas/update_user_request' }
       security [{ Authorization: [] }]
       response '200', 'Successful Response' do
-        schema type: :object,
-        properties: {
-          code: { type: 'integer', example: 0 },
-          message: { type: 'string', example: 'ok' },
-          data: { type: 'object' }
-        }
-
+        schema '$ref' => '#/components/schemas/ok'
         run_test!
       end
     end
@@ -41,13 +35,7 @@ RSpec.describe 'v1/user', type: :request do
       produces 'application/json'
       security [{ Authorization: [] }]
       response '200', 'Successful Response' do
-        schema type: :object,
-        properties: {
-          code: { type: 'integer', example: 0 },
-          message: { type: 'string', example: 'ok' },
-          data: { type: 'object' }
-        }
-
+        schema '$ref' => '#/components/schemas/ok'
         run_test!
       end
     end

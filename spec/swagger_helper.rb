@@ -14,7 +14,39 @@ RSpec.configure do |config|
         version: '1.0.0'
       },
       components: {
+        securitySchemes: {
+          Authorization: {
+            type: 'http',
+            scheme: 'bearer',
+            bearerFormat: 'JWT',
+            description: 'JWT Bearer Token authentication'
+          }
+        },
+        servers: [
+          {
+            url: 'http://127.0.0.1:8000',
+            description: 'Development Environment'
+          },
+          {
+            url: 'http://test.aphrodite.com',
+            description: 'Test Environment'
+          }
+        ],
         schemas: {
+          ok: {
+            properties: {
+              code: { type: :string, example: 0},
+              message: { type: :string, example: 'ok' },
+              data: { type: :object }
+            }
+          },
+          err: {
+            properties: {
+              code: { type: :string, example: -1},
+              message: { type: :string, example: 'err' },
+              data: { type: :object }
+            }
+          },
           login_response: {
             properties: {
               access_token: { type: :string, example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...', description: 'Access token' },
@@ -57,26 +89,8 @@ RSpec.configure do |config|
               }
             }
           }
-        },
-        securitySchemes: {
-          Authorization: {
-            type: 'http',
-            scheme: 'bearer',
-            bearerFormat: 'JWT',
-            description: 'JWT Bearer Token authentication'
-          }
         }
-      },
-      servers: [
-        {
-          url: 'http://127.0.0.1:8000',
-          description: 'Development Environment'
-        },
-        {
-          url: 'http://test.aphrodite.com',
-          description: 'Test Environment'
-        }
-      ]
+      }
     }
   }
 

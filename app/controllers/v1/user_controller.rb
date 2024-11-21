@@ -5,12 +5,12 @@ module V1
     def get
       user_code = params[:user_code]
       user = if user_code.present?
-        User.find_by_user_code(user_code)
+        User.find_by(user_code: user_code)
       else
         nil
       end
       user ||= @current_user
-      get_user_response = GetUserResponse.new(
+      get_user_response = Responses::V1::GetUserResponse.new(
         nickname: user.nickname,
         user_no: user.user_no,
         user_code: user.user_code,
