@@ -68,7 +68,7 @@ module V1
         end
         login_response = Responses::V1::LoginResponse.new(access_token: user.login_token)
         Rails.cache.delete(cache_key)
-        render json: ApiResponse.ok(login_response), status: :ok
+        render json: ApiResponse.ok(data:login_response), status: :ok
       else
         render json: ApiResponse.err, status: :bad_request
       end

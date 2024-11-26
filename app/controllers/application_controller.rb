@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def handle_exception(exception)
     logger.error "Exception occurred: #{exception.class.name}: #{exception.message}"
-    # logger.error exception.backtrace.join('\n')
+    logger.error exception.backtrace.join('\n')
 
     render json: ApiResponse.err(message: 'Internal Server Error'), status: 500
   end

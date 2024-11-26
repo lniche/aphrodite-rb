@@ -17,7 +17,7 @@ module V1
         email: user.email,
         phone: user.phone
       )
-      render json: ApiResponse.ok(get_user_response)
+      render json: ApiResponse.ok(data:get_user_response)
     end
 
     def update
