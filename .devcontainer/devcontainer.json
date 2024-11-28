@@ -1,16 +1,15 @@
 {
-    "name": "Maybe",
+  "name": "Rails Dev Container",
     "dockerComposeFile": "docker-compose.yml",
     "service": "app",
     "workspaceFolder": "/workspace",
     "containerEnv": {
-      "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}",
-      "GITHUB_USER": "${localEnv:GITHUB_USER}"
+      "RAILS_ENV": "development"
     },
     "remoteEnv": {
       "PATH": "/workspace/bin:${containerEnv:PATH}"
     },
-    "postCreateCommand": "bundle install && npm install",
+    "postCreateCommand": "bundle install",
     "customizations": {
       "vscode": {
         "extensions": [

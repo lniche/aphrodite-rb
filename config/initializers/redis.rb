@@ -1,4 +1,4 @@
-redis_url = ENV['REDIS_URL'] || 'redis://127.0.0.1:6379/0'
+redis_url = ENV['REDIS_URL']
 
 $redis = ConnectionPool.new(size: 5, timeout: 5) do
   Redis.new(url: redis_url)

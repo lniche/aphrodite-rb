@@ -4,9 +4,6 @@
 *.o
 *.so
 
-# Bundler config files
-Gemfile.lock
-
 # Log files
 log/*
 *.log
@@ -41,3 +38,5 @@ doc/
 # System generated files
 Thumbs.db
 .DS_Store
+
+.devcontainer
