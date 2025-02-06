@@ -1,6 +1,6 @@
 # Aphrodite Rails API Scaffold
 
-[English](README.md) | [简体中文](README-zh.md)
+[English](README.md) | [简体中文](README-zh.md) | [日本語](README-ja)
 
 Aphrodite 是一个基于 [Rails](https://rubyonrails.org) 开发的模板项目，旨在帮助开发者快速上手，深入理解框架的使用流程。该项目提供了全面的示例代码和配置，涵盖了常见的开发场景，以便于学习和实践。此外，Aphrodite 还包含容器部署模板，使得项目在现代云环境中能够轻松部署与管理，助力开发者高效构建和发布应用。
 
@@ -80,7 +80,7 @@ mv .env.example .env
 bundle install
 
 # 4. 初始化数据库
-db/init.sql
+db/migrate/V1.0.0__initial_schema.sql
 
 # 5. 启动服务
 bin/rails server
@@ -89,34 +89,9 @@ bin/rails server
 rake rswag:specs:swaggerize
 ```
 
-## Repo Activity
+## 活动记录
 
 ![Alt](https://repobeats.axiom.co/api/embed/92f87152abeaf234940e0a4979ac2644ab05a54f.svg "Repobeats analytics image")
-
-## 贡献
-
-如果你有任何建议或想法，欢迎创建 Issue 或直接提交 Pull Request。
-
-1. Fork 这个仓库。
-2. 创建一个新的分支：
-
-```
-git checkout -b feature/your-feature
-```
-
-3. 提交你的更改：
-
-```
-git commit -m 'Add new feature'
-```
-
-4. 推送到你的分支：
-
-```
-git push origin feature/your-feature
-```
-
-5. 提交 Pull Request。
 
 ## 许可证
 

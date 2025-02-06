@@ -1,6 +1,6 @@
 # Aphrodite Rails API Scaffold
 
-[English](README.md) | [简体中文](README-zh.md)
+[English](README.md) | [简体中文](README-zh.md) | [日本語](README-ja)
 
 Aphrodite is a template project based on [Rails](https://rubyonrails.org) that aims to help developers get started quickly and gain a deep understanding of the framework's usage process. The project provides comprehensive sample code and configurations, covering common development scenarios for easy learning and practice. In addition, Aphrodite also includes container deployment templates, making the project easy to deploy and manage in modern cloud environments, helping developers efficiently build and release applications.
 
@@ -80,7 +80,7 @@ mv .env.example .env
 bundle install
 
 # 4. Initialize the database
-db/init.sql
+db/migrate/V1.0.0__initial_schema.sql
 
 # 5. Start the service
 bin/rails server
@@ -92,31 +92,6 @@ rake rswag:specs:swaggerize
 ## Repo Activity
 
 ![Alt](https://repobeats.axiom.co/api/embed/92f87152abeaf234940e0a4979ac2644ab05a54f.svg "Repobeats analytics image")
-
-## Contribution
-
-If you have any suggestions or ideas, welcome to create an issue or submit a Pull Request directly.
-
-1. **Fork** this repository.
-2. **Create** a new branch:
-
-```
-git checkout -b feature/your-feature
-```
-
-3. **Commit** your changes:
-
-```
-git commit -m 'Add new feature'
-```
-
-4. **Push** to your branch:
-
-```
-git push origin feature/your-feature
-```
-
-5. **Submit** a Pull Request.
 
 ## License
 
